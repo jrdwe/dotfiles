@@ -20,11 +20,27 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # prompt aesthetic
 autoload -U promptinit; promptinit
-prompt pure
+prompt redhat
 
-# completion system
-autoload -U compinit; compinit
- 
+# parse git branch
+function parse_git_branch() {
+  COLOR_DEF=$'%f'
+  COLOR_GIT=$'%F{39}'
+  BRANCH=$(git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p')
+  if [[ $BRANCH == "" ]];
+  then
+    :
+  else
+    echo "${COLOR_GIT}${BRANCH}${COLOR_DEF} "
+  fi
+}
+
+# enable substitution in the prompt
+setopt prompt_subst
+
+# add git branch to prompt
+prompt+='$(parse_git_branch)'
+
 # history settings
 HISTFILE=~/.history-zsh
 HISTSIZE=5000

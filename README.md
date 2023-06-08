@@ -5,16 +5,9 @@
 
 ### Tmux Configuration
 
-1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-2. copy .tmux.conf file and run `tmux source ~/.tmux.conf`
-3. in tmux run `prefix` + `I` to install plugins
+1. copy .tmux.conf file and run `tmux source ~/.tmux.conf`
 
 ### Helix Configuration
 
-1. `brew install helix`
+1. follow [this](https://docs.helix-editor.com/install.html) installation guide
 2. copy config.toml into `~/.config/helix/config.toml`
-
-### Additional Installs
-
-1. iTerm2: `https://iterm2.com/`
-2. iTerm2 Snazzy: `https://github.com/sindresorhus/iterm2-snazzy`
