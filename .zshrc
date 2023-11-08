@@ -2,10 +2,11 @@
 # short .zshrc
 
 # aliases
-alias h="history"
+alias h="cat ~/.history-zsh"
+alias c="clear"
 alias d='dirs -v'
 alias ,='cd ..'
-alias ls='ls -G'
+alias ls='ls -Gl'
 alias glo='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
 
@@ -47,7 +48,6 @@ HISTSIZE=5000
 SAVEHIST=5000
 
 setopt append_history           # allow multiple sessions to append to one history
-setopt extended_history         # Write history in :start:elasped;command format
 setopt hist_expire_dups_first   # expire duplicates first when trimming history
 setopt hist_find_no_dups        # When searching history, don't repeat
 setopt hist_reduce_blanks       # Remove extra blanks from each command added to history
@@ -64,4 +64,6 @@ setopt autocd                   # cd to a folder just by typing it's name
 # path 
 typeset -U path                 # keep duplicates out of the path
 
-export PATH=$PATH:/usr/local/opt/llvm/bin
+# c++
+co() { g++ -std=c++17 -O2 -o "${1%.*}" $1 -Wall; }
+run() { co $1 && ./${1%.*} & fg; }
